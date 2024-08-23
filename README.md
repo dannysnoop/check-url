@@ -18,6 +18,13 @@
     npm run build
     ```
 
+
+3. **Test the project:**
+
+    ```bash
+    npm test
+    ```    
+asdasd
 ## Usage
 
 ### Running the Service
