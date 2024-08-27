@@ -1,4 +1,3 @@
-// src/utils/urlValidator.ts
 export class UrlValidator {
   private static urlPattern = new RegExp(
     '^https?:\\/\\/' + // protocol
