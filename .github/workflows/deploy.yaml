@@ -1,0 +1,36 @@
+name: Deploy Lambda & S3
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Zip Lambda
+        run: |
+          cd lambda
+          zip -r ../lambda.zip .
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-southeast-1 # thay theo region của bạn
+
+      - name: Deploy Lambda
+        run: |
+          aws lambda update-function-code \
+            --function-name my-lambda-func \
+            --zip-file fileb://lambda.zip
+
+      - name: Sync S3
+        run: |
+          aws s3 sync ./s3 s3://danny-deptrai11 --delete
