@@ -4,7 +4,7 @@ const s3 = new S3Client({ region: 'us-east-1' });  // Thay theo region của b�
 
 exports.handler = async (event) => {
   const params = {
-    Bucket: 'my-s3-bucket-name',  // Thay bằng tên bucket của bạn
+    Bucket: 'danny-deptrai11',  // Thay bằng tên bucket của bạn
     Key: 'hello.txt',             // Tên tệp bạn muốn lưu
     Body: 'Hello from Lambda!',   // Nội dung tệp
   };
