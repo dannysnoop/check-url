@@ -12,6 +12,7 @@ exports.handler = async (event) => {
   try {
     const data = await s3.send(new PutObjectCommand(params));
     console.log('File uploaded successfully', data);
+    console.log('File uploaded successfully', data);
     return {
       statusCode: 200,
       body: JSON.stringify({ message: 'File uploaded successfully!' }),
